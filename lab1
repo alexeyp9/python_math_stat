@@ -1,29 +1,32 @@
 import sys
-inpFile = open('C:\Popov\lab1_inp.txt', 'r')
+
+inpFile = open(r'D:\ГУУ\7 семестр\Проектный практикум\lab1_inp.txt', 'r')
 sum = 0
 kol = 0
 disp = 0
 for line in inpFile:
-    sum += float(line)
-    kol += 1
-"""Проверка на пустоту файла"""
+    if line.strip().isdigit():
+       sum += float(line)
+       kol += 1
+    """Проверка на пустоту файла"""
 if kol == 0:
-    outpFile = open("C:\Popov\lab1_out.txt", 'w')
+    outpFile = open(r"D:\ГУУ\7 семестр\Проектный практикум\lab1_out.txt", 'w')
     print("Файл не содержит необходимых значений")
     outpFile.write(f"Файл для ввода не содержит необходимых значений или пуст!")
     sys.exit()
 sr = sum / kol
 inpFile.close()
-inpFile = open('C:\Popov\lab1_inp.txt', 'r')
+inpFile = open(r'D:\ГУУ\7 семестр\Проектный практикум\lab1_inp.txt', 'r')
 
 for line in inpFile:
-    disp += (float(line) - sr) ** 2
+    if line.strip().isdigit():
+        disp += (float(line) - sr) ** 2
 inpFile.close()
 StOtkl = disp ** 0.5
 koefVar = StOtkl / sr
-outpFile = open('C:\Popov\lab1_out.txt', 'w')
+outpFile = open(r'D:\ГУУ\7 семестр\Проектный практикум\lab1_out.txt', 'w')
 outpFile.write(f"Дисперсия равна {round(disp, 2)}."
-                f"\nCреднее значение равно {round(sr, 2)}."
-                f"\nСтандартное отклонение равно {round(StOtkl, 2)}."
-                f"\nКоэффициент вариации равен {round(koefVar, 2)}.")
+               f"\nCреднее значение равно {round(sr, 2)}."
+               f"\nСтандартное отклонение равно {round(StOtkl, 2)}."
+               f"\nКоэффициент вариации равен {round(koefVar, 2)}.")
 outpFile.close()
